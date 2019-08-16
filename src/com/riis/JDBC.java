@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Date;
 
 public class JDBC {
 
@@ -31,4 +32,22 @@ public class JDBC {
        }return 0;
 
    }
+    public static int CreateRequest(String u,String ds, String de, int eid){
+    Date dayS=Date.valueOf(ds);
+    Date dayE=Date.valueOf(de);
+    //status 2 is pending
+        try{
+            Connection connection = DriverManager.getConnection(u);
+            Statement stmt = connection.createStatement();
+            String q="USE PaidTimeOff INSERT INTO Requests VALUES ('"+eid+"', '"+ds+"', '"+de+"',2);";
+            System.out.println(q);
+            stmt.execute(q);
+
+            return 0;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        return -1;}
+    }
+
 }

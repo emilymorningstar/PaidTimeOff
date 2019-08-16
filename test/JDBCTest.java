@@ -21,4 +21,13 @@ public class JDBCTest {
         String url="jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
         int i= JDBC.newUser(url,"name1","name2","email",3,2,"password");
         Assert.assertEquals(0,i);
-    }}
+    }
+    @Test
+    public void CreateRequestTest(){
+        String url="jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
+
+        //yyyy-mm-dd
+       int i= JDBC.CreateRequest(url,"2000-1-1","2000-8-30",3);
+        Assert.assertEquals(0,i);
+    }
+}
