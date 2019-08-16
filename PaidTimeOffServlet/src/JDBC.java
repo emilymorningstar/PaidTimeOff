@@ -1,4 +1,3 @@
-package com.riis;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -69,12 +68,28 @@ public class JDBC {
         try {
             Connection connection = DriverManager.getConnection(u);
             Statement stmt = connection.createStatement();
-            String q = "USE PaidTimeOff SELECT email from Employees Where email='" + Username + "'AND password='"+Password+"';";
+            String q = "USE PaidTimeOff SELECT email from Employees Where email='" + Username + "'AND password='" + Password + "';";
             System.out.println(q);
             ResultSet rs = stmt.executeQuery(q);
-            if(rs.next()){
-            return rs.getString("email");}
+            if (rs.next()) {
+                return rs.getString("email");
+            }
             return "Log in error please enter the correct information";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ResultSet view(String u, int id) {
+        try {
+            Connection connection = DriverManager.getConnection(u);
+            Statement stmt = connection.createStatement();
+            String q = "SELECT StartDate, EndDate, Status FROM Requests Where EmployeeID="+id+";";
+            System.out.println(q);
+            ResultSet rs = stmt.executeQuery(q);
+            System.out.println(rs);
+            return rs;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
