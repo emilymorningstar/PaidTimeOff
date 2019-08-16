@@ -49,5 +49,17 @@ public class JDBC {
             e.printStackTrace();
         return -1;}
     }
-
+    public static int getEmployeeId(String u, String s){
+        try{
+            Connection connection = DriverManager.getConnection(u);
+            Statement stmt = connection.createStatement();
+            String q="USE PaidTimeOff SELECT id from Employees Where email='"+s+"';";
+            ResultSet rs=stmt.executeQuery(q);
+            rs.next();
+            return rs.getInt("id");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            return -1;}
+    }
 }
