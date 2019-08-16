@@ -1,10 +1,10 @@
-
 import com.riis.JDBC;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 public class JDBCTest {
     JDBC jdbc = new JDBC();
@@ -53,6 +53,7 @@ public class JDBCTest {
         String s = JDBC.login(url, u, p);
         Assert.assertEquals("emorningstar@riis.com", s);
     }
+
     @Test
     public void logInTestBad() {
         String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
@@ -61,5 +62,15 @@ public class JDBCTest {
         String p = "password";
         String s = JDBC.login(url, u, p);
         Assert.assertEquals("Log in error please enter the correct information", s);
+    }
+
+    @Test
+    public void viewTest() {
+        String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
+        int eid = 3;
+        ResultSet rs = JDBC.view(url, eid);
+        Assert.assertNotNull(rs);
+
+
     }
 }
