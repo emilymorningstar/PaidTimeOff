@@ -72,8 +72,9 @@ public class JDBC {
             String q = "USE PaidTimeOff SELECT email from Employees Where email='" + Username + "'AND password='"+Password+"';";
             System.out.println(q);
             ResultSet rs = stmt.executeQuery(q);
-            rs.next();
-            return rs.getString("email");
+            if(rs.next()){
+            return rs.getString("email");}
+            return "Log in error please enter the correct information";
         } catch (Exception e) {
             e.printStackTrace();
             return null;

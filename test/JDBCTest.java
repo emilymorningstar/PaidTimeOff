@@ -53,4 +53,13 @@ public class JDBCTest {
         String s = JDBC.login(url, u, p);
         Assert.assertEquals("emorningstar@riis.com", s);
     }
+    @Test
+    public void logInTestBad() {
+        String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
+
+        String u = "er@riis.com";
+        String p = "password";
+        String s = JDBC.login(url, u, p);
+        Assert.assertEquals("Log in error please enter the correct information", s);
+    }
 }
