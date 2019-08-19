@@ -1,9 +1,11 @@
+package com.riis;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Date;
+//import com.microsoft.sqlserver.jdbc.*;
 
 public class JDBC {
 
