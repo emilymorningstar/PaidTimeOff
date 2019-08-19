@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Date;
-//import com.microsoft.sqlserver.jdbc.*;
+import com.microsoft.sqlserver.jdbc.*;
 
 public class JDBC {
 
@@ -79,7 +79,7 @@ public class JDBC {
             return "Log in error please enter the correct information";
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return e.toString();
         }
     }
 
