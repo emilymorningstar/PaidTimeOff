@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Date;
-import com.microsoft.sqlserver.jdbc.*;
+//import com.microsoft.sqlserver.jdbc.*;
 
 public class JDBC {
 
     public static Connection connect(String url) {
+
         try (Connection connection = DriverManager.getConnection(url);) {
             return connection;
         } catch (Exception e) {
@@ -68,6 +69,7 @@ public class JDBC {
 
     public static String login(String u, String Username, String Password) {
         try {
+
             Connection connection = DriverManager.getConnection(u);
             Statement stmt = connection.createStatement();
             String q = "USE PaidTimeOff SELECT email from Employees Where email='" + Username + "'AND password='" + Password + "';";
