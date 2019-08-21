@@ -30,7 +30,7 @@ else{
 %>
 </table>
 <form action="newrequest.jsp">
-<input type="submit">
+<input type="submit" value="request time off!">
 </form>
 </body>
 </html>
