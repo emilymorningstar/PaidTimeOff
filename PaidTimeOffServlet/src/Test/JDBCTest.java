@@ -6,7 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.util.Calendar;
 
 public class JDBCTest {
     JDBC jdbc = new JDBC();
@@ -22,7 +24,7 @@ public class JDBCTest {
         Connection c= jdbc.connect(url);
         Assert.assertNotNull(c);
     }*/
-    //@Test
+    //@Test //too many test data in database
     public void newUserTest() {
         String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
         int i = JDBC.newUser(url, "name1", "name2", "email", 3, 2, "password");
@@ -66,7 +68,7 @@ public class JDBCTest {
         Assert.assertEquals("Log in error please enter the correct information", s);
     }
 
-    @Test
+    //@Test //test will be wrong after new table additions
     public void viewTest() {
         String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
         int eid = 3;
@@ -83,5 +85,12 @@ public class JDBCTest {
         Assert.assertEquals("Pending",JDBC.getStatus(id));
         id=3;
         Assert.assertEquals("Denied",JDBC.getStatus(id));
+    }
+    @Test
+    public void addTest(){
+        Date start=new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        Date end=new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        int employeeId=3;
+        Assert.assertEquals("ok",JDBC.addRequest(start,end,employeeId));
     }
 }

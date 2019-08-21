@@ -23,7 +23,7 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
         try {
             Connection connection = DriverManager.getConnection(u);
             Statement stmt = connection.createStatement();
-            String q = "USE PaidTimeOff INSERT INTO EMPLOYEES VALUES ('" + f + "', '" + l + "', '" + email + "', '" + roleID + "', '" + p + "');";
+            String q = "USE PaidTimeOff INSERT INTO employees VALUES ('" + f + "', '" + l + "', '" + email + "', '" + roleID + "', '" + p + "');";
             System.out.println(q);
             stmt.execute(q);
 
@@ -55,7 +55,7 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
 
     public static int getEmployeeId(String u, String s) {
         try {
-            Connection connection = DriverManager.getConnection(u);
+            Connection connection = DriverManager.getConnection(JDBC.getUrl());
             Statement stmt = connection.createStatement();
             String q = "USE PaidTimeOff SELECT id from Employees Where email='" + s + "';";
             ResultSet rs = stmt.executeQuery(q);
@@ -118,5 +118,21 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
             return null;
         }
         return null;
+    }
+
+    public static String addRequest(Date start, Date end, int employeeId) {
+        try{Connection connection = null;
+        connection = DriverManager.getConnection(getUrl());
+        PreparedStatement stmt =connection.prepareStatement("USE PaidTimeOff  INSERT INTO Requests VALUES (?,?,?,?)");
+        stmt.setString(1,"3");
+        stmt.setString(2,start.toString());
+        stmt.setString(3,end.toString());
+        stmt.setString(4,"2");
+        stmt.executeUpdate();
+        return "ok";}
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
