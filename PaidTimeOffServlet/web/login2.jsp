@@ -19,11 +19,14 @@
             //out.println("<b>username:</b>"+request.getParameter("username"));
             //out.println("<b>password:</b>"+request.getParameter("password"));
             out.println(s);
-            out.print("<form id=\"form\" action=\"main.jsp\" method=\"POST\"> " +
-                    "<input type=\"hidden\" name=\"username\" value=\"<?php echo $username ?>\">" +
-                    "\"<input type=\\\"hidden\\\" name=\\\"password\\\" value=\\\"<?php echo $password ?>\\\">");
-
-            out.print("<script>document.getElementById(\"form\").submit();<script>");
+            out.print("<form id=\"myForm\" action=\"main.jsp\" method=\"POST\"> " +
+                    "<input type=\"hidden\" name=\"username\" value=\"<?php echo $username ?>\">");
+            out.print("<input type=\"hidden\" name=\"password\" value=\"<?php echo $password ?>\">");
+            out.print("</form>");
+            out.print("<script>\n" +
+                    "    document.getElementById(\"myForm\").submit();\n" +
+                    "\n" +
+                    "</script>");
         }
         else{
         out.println(s);
