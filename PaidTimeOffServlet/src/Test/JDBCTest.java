@@ -75,4 +75,13 @@ public class JDBCTest {
 
 
     }
+    @Test
+    public void statusTest(){
+        int id=1;
+        Assert.assertEquals("Approved",JDBC.getStatus(id));
+        id=2;
+        Assert.assertEquals("Pending",JDBC.getStatus(id));
+        id=3;
+        Assert.assertEquals("Denied",JDBC.getStatus(id));
+    }
 }

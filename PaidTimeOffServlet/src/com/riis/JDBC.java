@@ -1,14 +1,14 @@
 package com.riis;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Date;
+import java.sql.*;
 //import com.microsoft.sqlserver.jdbc.*;
 
 public class JDBC {
+private final static String url="jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
 
+    public static String getUrl(){
+        return url;
+    }
     public static Connection connect(String url) {
 
         try (Connection connection = DriverManager.getConnection(url);) {
@@ -89,14 +89,34 @@ public class JDBC {
         try {
             Connection connection = DriverManager.getConnection(u);
             Statement stmt = connection.createStatement();
-            String q = "SELECT StartDate, EndDate, Status FROM Requests Where EmployeeID="+id+";";
+            String q = "USE PaidTimeOff SELECT StartDate, EndDate, Status FROM Requests Where EmployeeID="+id+";";
             System.out.println(q);
             ResultSet rs = stmt.executeQuery(q);
             System.out.println(rs);
+
             return rs;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
+
+    }
+
+    public static String getStatus(int i) {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(getUrl());
+            Statement stmt = connection.createStatement();
+            String q = "USE PaidTimeOff SELECT Status FROM [status] WHERE id="+i+"";
+            System.out.println(q);
+            ResultSet rs = stmt.executeQuery(q);
+            if (rs.next()) {
+                return rs.getString("status");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
     }
 }

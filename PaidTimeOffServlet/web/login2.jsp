@@ -12,21 +12,17 @@
 
     <title>Title</title>
     <%
-        String s=JDBC.login("jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123",request.getParameter("username"),request.getParameter("password"));
+        String s=JDBC.login(JDBC.getUrl(),request.getParameter("username"),request.getParameter("password"));
 
         if(s!=null&&s!="Log in error please enter the correct information")
         {
-            //out.println("<b>username:</b>"+request.getParameter("username"));
-            //out.println("<b>password:</b>"+request.getParameter("password"));
-            out.println(s);
-            out.print("<form id=\"myForm\" action=\"main.jsp\" method=\"POST\"> " +
-                    "<input type=\"hidden\" name=\"username\" value=\"<?php echo $username ?>\">");
-            out.print("<input type=\"hidden\" name=\"password\" value=\"<?php echo $password ?>\">");
-            out.print("</form>");
+            session.setAttribute( "username", request.getParameter("username") );
+            session.setAttribute( "password", request.getParameter("password") );
+            out.print("<form id=\"myForm\" action=\"main.jsp\" method=\"POST\"> " );//+
             out.print("<script>\n" +
-                    "    document.getElementById(\"myForm\").submit();\n" +
-                    "\n" +
-                    "</script>");
+                   "    document.getElementById(\"myForm\").submit();\n" +
+                   "\n" +
+                   "</script>");
         }
         else{
         out.println(s);
