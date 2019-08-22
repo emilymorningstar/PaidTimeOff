@@ -17,9 +17,9 @@
         out.print("<META http-equiv=\"refresh\" content=\"3;URL=login.jsp\">");
     }
     else {
-        out.print("<form name = \"newRequestForm\" action = \"request2.jsp\" >\n" +
-                "                start date: &nbsp<input type = \"date\" >\n" +
-                "                end date:  &nbsp<input type = \"date\" >\n" +
+        out.print("<form name = \"newRequestForm\" action = \"request2.jsp\" method=post>\n" +
+                "                start date: &nbsp<input type = \"date\" name=sdate>\n" +
+                "                end date:  &nbsp<input type = \"date\" name=edate>\n" +
                 "    <input type = \"submit\" >");
 
     }%>

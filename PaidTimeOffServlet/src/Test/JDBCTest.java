@@ -84,7 +84,7 @@ public class JDBCTest {
     public void addTest(){
         Date start=new java.sql.Date(Calendar.getInstance().getTime().getTime());
         Date end=new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        int employeeId=3;
-        Assert.assertEquals("ok",JDBC.addRequest(start,end,employeeId));
+       //int employeeId=3;
+        Assert.assertEquals("ok",JDBC.addRequest(start,end,"emorningstar@riis.com"));
     }
 }

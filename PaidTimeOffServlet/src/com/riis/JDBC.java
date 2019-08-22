@@ -120,11 +120,11 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
         return null;
     }
 
-    public static String addRequest(Date start, Date end, int employeeId) {
+    public static String addRequest(Date start, Date end, String uname) {
         try{Connection connection = null;
         connection = DriverManager.getConnection(getUrl());
         PreparedStatement stmt =connection.prepareStatement("USE PaidTimeOff  INSERT INTO Requests VALUES (?,?,?,?)");
-        stmt.setString(1,"3");
+        stmt.setString(1,""+getEmployeeId(uname));
         stmt.setString(2,start.toString());
         stmt.setString(3,end.toString());
         stmt.setString(4,"2");
