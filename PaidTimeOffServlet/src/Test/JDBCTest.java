@@ -25,7 +25,7 @@ public class JDBCTest {
     //@Test //too many test data in database
     public void newUserTest() {
 
-        int i = JDBC.newUser( "name1", "name2", "email", 3, 2, "password");
+        int i = JDBC.newUser( "name1", "name2", "email",  2, "password");
         Assert.assertEquals(0, i);
     }
 
@@ -86,5 +86,10 @@ public class JDBCTest {
         Date end=new java.sql.Date(Calendar.getInstance().getTime().getTime());
        //int employeeId=3;
         Assert.assertEquals("ok",JDBC.addRequest(start,end,"emorningstar@riis.com"));
+    }
+    @Test
+    public void existTest(){
+        Assert.assertEquals(true,JDBC.accountExists("email"));
+        Assert.assertFalse(JDBC.accountExists("Iamnotanemailaddress"));
     }
 }

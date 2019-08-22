@@ -19,7 +19,7 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
         }
     }
 
-    public static int newUser(String f, String l, String email, int id, int roleID, String p) {
+    public static int newUser(String f, String l, String email, int roleID, String p) {
         try {
             Connection connection = DriverManager.getConnection(getUrl());
             Statement stmt = connection.createStatement();
@@ -133,6 +133,24 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
         catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    public static boolean accountExists(String email){
+        try {
+            Connection connection = null;
+            connection = DriverManager.getConnection(getUrl());
+            PreparedStatement stmt =connection.prepareStatement(  "USE PaidTimeOff select * from Employees where email = ?");
+            stmt.setString(1,email);
+            ResultSet rs=stmt.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

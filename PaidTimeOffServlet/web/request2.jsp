@@ -27,6 +27,7 @@
             java.sql.Date ed = new java.sql.Date(parsede.getTime());
             String u= session.getAttribute("username").toString();
             JDBC.addRequest(sd,ed,u);
+            out.print("<META http-equiv=\"refresh\" content=\"0;URL=main.jsp\">");
         }%>
 
 </body>
