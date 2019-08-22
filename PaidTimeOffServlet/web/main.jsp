@@ -17,7 +17,7 @@ if(session.getAttribute("username")==null){
     out.print("<META http-equiv=\"refresh\" content=\"3;URL=login.jsp\">");
 }
 else{
-    ResultSet rs= JDBC.view(JDBC.getUrl(),JDBC.getEmployeeId(JDBC.getUrl(),(String)session.getAttribute( "username" )));
+    ResultSet rs= JDBC.view(JDBC.getEmployeeId((String)session.getAttribute( "username" )));
 
     while (rs.next()) {
         // retrieve and print the values for the current row

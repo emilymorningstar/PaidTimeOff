@@ -19,9 +19,9 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
         }
     }
 
-    public static int newUser(String u, String f, String l, String email, int id, int roleID, String p) {
+    public static int newUser(String f, String l, String email, int id, int roleID, String p) {
         try {
-            Connection connection = DriverManager.getConnection(u);
+            Connection connection = DriverManager.getConnection(getUrl());
             Statement stmt = connection.createStatement();
             String q = "USE PaidTimeOff INSERT INTO employees VALUES ('" + f + "', '" + l + "', '" + email + "', '" + roleID + "', '" + p + "');";
             System.out.println(q);
@@ -35,12 +35,12 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
 
     }
 
-    public static int CreateRequest(String u, String ds, String de, int eid) {
+    public static int CreateRequest(String ds, String de, int eid) {
         Date dayS = Date.valueOf(ds);
         Date dayE = Date.valueOf(de);
         //status 2 is pending
         try {
-            Connection connection = DriverManager.getConnection(u);
+            Connection connection = DriverManager.getConnection(getUrl());
             Statement stmt = connection.createStatement();
             String q = "USE PaidTimeOff INSERT INTO Requests VALUES ('" + eid + "', '" + ds + "', '" + de + "',2);";
             System.out.println(q);
@@ -53,9 +53,9 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
         }
     }
 
-    public static int getEmployeeId(String u, String s) {
+    public static int getEmployeeId(String s) {
         try {
-            Connection connection = DriverManager.getConnection(JDBC.getUrl());
+            Connection connection = DriverManager.getConnection(getUrl());
             Statement stmt = connection.createStatement();
             String q = "USE PaidTimeOff SELECT id from Employees Where email='" + s + "';";
             ResultSet rs = stmt.executeQuery(q);
@@ -67,10 +67,10 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
         }
     }
 
-    public static String login(String u, String Username, String Password) {
+    public static String login(String Username, String Password) {
         try {
 
-            Connection connection = DriverManager.getConnection(u);
+            Connection connection = DriverManager.getConnection(getUrl());
             Statement stmt = connection.createStatement();
             String q = "USE PaidTimeOff SELECT email from Employees Where email='" + Username + "'AND password='" + Password + "';";
             System.out.println(q);
@@ -85,9 +85,9 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
         }
     }
 
-    public static ResultSet view(String u, int id) {
+    public static ResultSet view(int id) {
         try {
-            Connection connection = DriverManager.getConnection(u);
+            Connection connection = DriverManager.getConnection(getUrl());
             Statement stmt = connection.createStatement();
             String q = "USE PaidTimeOff SELECT StartDate, EndDate, Status FROM Requests Where EmployeeID="+id+";";
             System.out.println(q);

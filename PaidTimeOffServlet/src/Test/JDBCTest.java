@@ -19,15 +19,13 @@ public class JDBCTest {
 
     /*@Test
     public void connectTest() {
-
-        String url="jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
-        Connection c= jdbc.connect(url);
+        Connection c= jdbc.getURL;
         Assert.assertNotNull(c);
     }*/
     //@Test //too many test data in database
     public void newUserTest() {
-        String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
-        int i = JDBC.newUser(url, "name1", "name2", "email", 3, 2, "password");
+
+        int i = JDBC.newUser( "name1", "name2", "email", 3, 2, "password");
         Assert.assertEquals(0, i);
     }
 
@@ -36,43 +34,39 @@ public class JDBCTest {
         String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
 
         //yyyy-mm-dd
-        int i = JDBC.CreateRequest(url, "2000-1-1", "2000-8-30", 3);
+        int i = JDBC.CreateRequest("2000-1-1", "2000-8-30", 3);
         Assert.assertEquals(0, i);
     }
 
     @Test
     public void getEmployeeIdTest() {
         String email = "emorningstar@riis.com";
-        String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
-        int i = JDBC.getEmployeeId(url, email);
+        int i = JDBC.getEmployeeId(email);
         Assert.assertEquals(3, i);
     }
 
     @Test
     public void logInTestGood() {
-        String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
 
         String u = "emorningstar@riis.com";
         String p = "password";
-        String s = JDBC.login(url, u, p);
+        String s = JDBC.login(u, p);
         Assert.assertEquals("emorningstar@riis.com", s);
     }
 
     @Test
     public void logInTestBad() {
-        String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
 
         String u = "er@riis.com";
         String p = "password";
-        String s = JDBC.login(url, u, p);
+        String s = JDBC.login( u, p);
         Assert.assertEquals("Log in error please enter the correct information", s);
     }
 
     //@Test //test will be wrong after new table additions
     public void viewTest() {
-        String url = "jdbc:sqlserver://localhost;user=sa;password=reallyStrongPwd123";
         int eid = 3;
-        ResultSet rs = JDBC.view(url, eid);
+        ResultSet rs = JDBC.view(eid);
         Assert.assertNotNull(rs);
 
 

@@ -12,7 +12,7 @@
 
     <title>Title</title>
     <%
-        String s=JDBC.login(JDBC.getUrl(),request.getParameter("username"),request.getParameter("password"));
+        String s=JDBC.login(request.getParameter("username"),request.getParameter("password"));
 
         if(s!=null&&s!="Log in error please enter the correct information")
         {
