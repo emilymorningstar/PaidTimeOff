@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 
 public class JDBCTest {
@@ -92,4 +93,21 @@ public class JDBCTest {
         Assert.assertEquals(true,JDBC.accountExists("email"));
         Assert.assertFalse(JDBC.accountExists("Iamnotanemailaddress"));
     }
+    @Test
+    public void existPermission(){
+        Assert.assertEquals(1,JDBC.accountType("jmarcotte@riis.com"));
+        Assert.assertEquals(2,JDBC.accountType("email"));
+        Assert.assertEquals(-1,JDBC.accountType("Iamnotanemailaddress"));
+    }
+    @Test
+    public void arePendingRequests(){
+        Assert.assertNotNull(JDBC.getPendingRequests());
+    }
+    @Test
+    public void isApproved() throws SQLException {
+        ResultSet rs = JDBC.getPendingRequests();
+        JDBC.approve(5);
+        Assert.assertNotEquals(rs,JDBC.getPendingRequests());
+    }
+
 }

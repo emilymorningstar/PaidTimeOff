@@ -153,4 +153,51 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
             return false;
         }
     }
+
+    public static int accountType(String email) {
+        try{
+            Connection connection = null;
+            connection = DriverManager.getConnection(getUrl());
+            PreparedStatement stmt =connection.prepareStatement("USE PaidTimeOff select RoleID from Employees where email = ?");
+            stmt.setString(1,email);
+            ResultSet rs=stmt.executeQuery();
+            if(rs.next()){
+            return(rs.getInt("RoleID"));}
+            else
+                return -1;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public static ResultSet getPendingRequests() {
+        try{
+            Connection connection = null;
+            connection = DriverManager.getConnection(getUrl());
+            PreparedStatement stmt =connection.prepareStatement("use PaidTimeOff SELECT EmployeeID,Firstname,Lastname,email,StartDate, Enddate,Requests.Id FROM Requests JOIN Employees on Requests.EmployeeID=Employees.id WHERE [Status]=2");
+            ResultSet rs=stmt.executeQuery();
+            return rs;
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void approve(int i) {
+        try{
+            Connection connection = null;
+            connection = DriverManager.getConnection(getUrl());
+            PreparedStatement stmt =connection.prepareStatement("use PaidTimeOff update requests set [status]=1 where id=?");
+            stmt.setString(1,i+"");
+            stmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
