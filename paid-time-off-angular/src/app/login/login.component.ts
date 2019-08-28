@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
 
     this.username = $event.target.username.value;
     this.password = $event.target.password.value;
+    console.log(this.username + this.password)
 // call to the data base to check log in
     // set the variables
     this.ls.setVariables(this.username, 1 , 1);

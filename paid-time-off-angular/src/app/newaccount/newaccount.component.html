@@ -1,8 +1,10 @@
+<div *ngIf="ls.getEmail()==null">
 <h1>Create a new account</h1>
-<form action="newaccount2.jsp" method="post" name="newuserform" required>
+<form (ngSubmit)="onSubmit($event)" name="newuserform" required>
   first name: <input type="text" name="firstname" required><br>
   last name: <input type="text" name="lastname" required><br>
-  email: <input type="email" name="email" required><br>
+  email: <input type="email" name="email" required email><br>
   password: <input type="password" name="password" required><br>
   <input type="submit" value="submit">
 </form>
+</div>

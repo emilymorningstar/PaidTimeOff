@@ -1,15 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Welcome to the paid time off request system!
   </h1>
 </div>
-  <div>
-  <app-login></app-login>
-  </div>
-  <div><app-mainpage></app-mainpage></div>
-<div><app-adminpage></app-adminpage></div>
-<div><app-newaccount></app-newaccount></div>
-<div><app-createrequest></app-createrequest></div>
+  <app-login routerLink="/"></app-login>
+<button *ngIf="ls.getid()!=null"routerLink="/myrequests">my requests</button>
+<button *ngIf="ls.getid()!=null"routerLink="/newrequest">new request</button>
+<button *ngIf="ls.getid()==1" routerLink="/approverequest">approve request</button>
+<router-outlet></router-outlet>
+
 
 

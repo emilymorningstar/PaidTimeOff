@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Request} from './request.component';
+import {LoginService} from '../login/login.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -9,7 +10,7 @@ import {Request} from './request.component';
 export class MainpageComponent implements OnInit {
   requests: Request[] = [];
 
-  constructor() {
+  constructor(private ls: LoginService) {
   }
 
   ngOnInit() {
