@@ -7,7 +7,7 @@
   <app-login routerLink="/"></app-login>
 <button *ngIf="ls.getid()!=null"routerLink="/myrequests">my requests</button>
 <button *ngIf="ls.getid()!=null"routerLink="/newrequest">new request</button>
-<button *ngIf="ls.getid()==1" routerLink="/approverequest">approve request</button>
+<button *ngIf="ls.getStatus()==1" routerLink="/approverequest">approve request</button>
 <router-outlet></router-outlet>
 
 

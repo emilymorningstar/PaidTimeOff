@@ -1,9 +1,8 @@
 export class Request {
-  Date1: Date;
-  Date2: Date;
-  fname: string;
-  lname: string;
-  email: string;
-  Id: number;
+
   status: number;
+
+  constructor(public Date1: number, public Date2: number, public fname: string, public lname: string, public email: string, public Id: number) {
+
+  }
 }

@@ -8,12 +8,20 @@ import {LoginService} from '../login/login.service';
   styleUrls: ['./adminpage.component.css']
 })
 export class AdminpageComponent implements OnInit {
-  requests: Request[] = [];
+  requests: Request[] = [ new Request(0, 0, 'Emily', 'Morningstar', 'emorningstar@riis.com', 3)];
   constructor(private ls: LoginService) { }
 
   ngOnInit() {
   }
   retrieveRequests() {
     // get requests from the server
+  }
+
+  approve($event) {
+    console.log('submit');
+    console.log(this.requests);
+// change event on database
+    this.requests.splice(0, 1);
+    console.log(this.requests);
   }
 }

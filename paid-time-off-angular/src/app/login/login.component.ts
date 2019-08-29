@@ -23,10 +23,15 @@ export class LoginComponent implements OnInit {
 
     this.username = $event.target.username.value;
     this.password = $event.target.password.value;
-    console.log(this.username + this.password)
+    console.log(this.username + this.password);
+    //TODO remove before release
 // call to the data base to check log in
     // set the variables
+    if (this.password === 'admin') {
     this.ls.setVariables(this.username, 1 , 1);
+    } else {
+      this.ls.setVariables(this.username, 2 , 1);
+    }
     // TODO status requires responce form database
     // TODO id requires responce form database
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login/login.service';
 
-@Component({``
+@Component({
   selector: 'app-newaccount',
   templateUrl: './newaccount.component.html',
   styleUrls: ['./newaccount.component.css']
@@ -25,5 +25,7 @@ password: string;
     this.lname = $event.target.lastname.value;
     this.email = $event.target.email.value;
     this.password = $event.target.password.value;
+    this.createAccount();
+
   }
 }

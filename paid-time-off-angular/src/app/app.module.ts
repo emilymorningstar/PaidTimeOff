@@ -9,6 +9,7 @@ import { AdminpageComponent} from './adminpage/adminpage.component';
 import { NewaccountComponent } from './newaccount/newaccount.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
 import {AppRoutingModule} from './app.routing.module';
+import {DummyrequestService} from './dummyrequest.service';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import {AppRoutingModule} from './app.routing.module';
     MainpageComponent,
     AdminpageComponent,
     NewaccountComponent,
-    CreaterequestComponent
+    CreaterequestComponent,
   ],
   imports: [
     BrowserModule,
