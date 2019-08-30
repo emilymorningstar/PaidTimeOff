@@ -109,5 +109,11 @@ public class JDBCTest {
         JDBC.approve(5);
         Assert.assertNotEquals(rs,JDBC.getPendingRequests());
     }
+    @Test
+    public void isDenied() throws SQLException {
+        ResultSet rs = JDBC.getPendingRequests();
+        JDBC.approve(8);
+        Assert.assertNotEquals(rs,JDBC.getPendingRequests());
+    }
 
 }

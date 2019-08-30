@@ -12,7 +12,17 @@
 </head>
 <body>
 <%
-    JDBC.approve(Integer.parseInt(request.getParameter("id")));
+  //approve
+    String s=request.getParameter("id");
+    if(s.indexOf("approve")!=-1){
+        String s2=s.substring(0,s.indexOf("approve"));
+    JDBC.approve(Integer.parseInt(s2));}
+
+
+    //deny
+    if(s.indexOf("deny")!=-1){
+        String s2=s.substring(0,s.indexOf("deny"));
+        JDBC.deny(Integer.parseInt(s2));}
     out.print("<META http-equiv=\"refresh\" content=\"0;URL=admin.jsp\">");
 %>
 </body>

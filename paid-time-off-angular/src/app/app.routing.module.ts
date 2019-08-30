@@ -4,6 +4,7 @@ import {NewaccountComponent} from './newaccount/newaccount.component';
 import {MainpageComponent} from './mainpage/mainpage.component';
 import {CreaterequestComponent} from './createrequest/createrequest.component';
 import {AdminpageComponent} from './adminpage/adminpage.component';
+import {HolidaysComponent} from './holidays/holidays.component';
 
 
 const appRoutes: Routes = [
@@ -11,6 +12,7 @@ const appRoutes: Routes = [
   {path: 'newrequest', component: CreaterequestComponent},
   {path: 'createaccount', component: NewaccountComponent},
   {path: 'approverequest', component: AdminpageComponent},
+  {path: 'holidays', component: HolidaysComponent},
   {path: 'main', component: MainpageComponent},
   {path: '', component: MainpageComponent }
 ];

@@ -33,7 +33,7 @@
             Date d1 = rs.getDate("StartDate");
             Date d2 = rs.getDate("EndDate");
             int id = rs.getInt("id");
-            out.println("<tr><td>"+ fname+"</td><td>"+ lname+"</td><td>" + email+"</td><td>"+ d1 + "</td><td>" + d2 + "</td><td>" + "<input type=radio name=id value="+id+ ">" +"</td></tr>");
+            out.println("<tr><td>"+ fname+"</td><td>"+ lname+"</td><td>" + email+"</td><td>"+ d1 + "</td><td>" + d2 + "</td><td>" + "<input type=radio name=id value="+id+"approve"+ ">"+"</td><td>" +"<input type=radio name=id value="+id+"deny"+ ">" +"</td></tr>");
         }
         out.println("</table><input type=submit value=submit></form>");
     }

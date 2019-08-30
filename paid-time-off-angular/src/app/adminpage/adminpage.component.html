@@ -1,12 +1,13 @@
 <form (ngSubmit)="approve($event)">
   <table *ngIf="ls.getStatus() === 1">
-  <tr><th>first name</th><th>last name</th><th>email</th><th>Start Date</th><th>End Date</th><th>approve</th></tr>
+  <tr><th>first name</th><th>last name</th><th>email</th><th>Start Date</th><th>End Date</th><th>approve</th><th>deny</th></tr>
 <tr *ngFor="let request of requests"><td>{{request.fname}}</td>
   <td>{{request.lname}}</td>
   <td>{{request.email}}</td><td>{{request.Date1}}</td>
   <td>{{request.Date2}}</td>
   <td><input type=radio name="{{request.Id}}" value="{{request.Id}}"></td>
+  <td><input type=radio name="{{request.Id}}" value="{{request.Id}}"></td>
 </tr>
-  <input type="submit">
   </table>
+  <input type="submit">
 </form>

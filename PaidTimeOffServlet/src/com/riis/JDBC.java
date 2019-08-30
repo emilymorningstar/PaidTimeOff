@@ -199,5 +199,17 @@ private final static String url="jdbc:sqlserver://localhost;user=sa;password=rea
             e.printStackTrace();
         }
     }
+    public static void deny(int i) {
+        try{
+            Connection connection = null;
+            connection = DriverManager.getConnection(getUrl());
+            PreparedStatement stmt =connection.prepareStatement("use PaidTimeOff update requests set [status]=3 where id=?");
+            stmt.setString(1,i+"");
+            stmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

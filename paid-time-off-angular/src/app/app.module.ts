@@ -9,6 +9,7 @@ import { AdminpageComponent} from './adminpage/adminpage.component';
 import { NewaccountComponent } from './newaccount/newaccount.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
 import {AppRoutingModule} from './app.routing.module';
+import {HolidaysComponent} from './holidays/holidays.component';
 import {DummyrequestService} from './dummyrequest.service';
 
 
@@ -20,6 +21,7 @@ import {DummyrequestService} from './dummyrequest.service';
     AdminpageComponent,
     NewaccountComponent,
     CreaterequestComponent,
+    HolidaysComponent
   ],
   imports: [
     BrowserModule,

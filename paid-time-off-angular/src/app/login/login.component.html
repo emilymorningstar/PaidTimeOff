@@ -1,6 +1,6 @@
 <form *ngIf="ls.getid()===null" (ngSubmit)="onSubmit($event)" #loginForm="ngForm">
   <input type="text" placeholder="username" name="username" >
   <input type="password" placeholder="password" name="password">
-  <input type="submit">
+  <input type="submit" class="btn-success">
 </form>
-<button class="btn btn-primary" *ngIf="ls.getid()!==null"(click)="onLogout()" >logout</button>
+<button class="btn-danger" *ngIf="ls.getid()!==null"(click)="onLogout()" >logout</button>

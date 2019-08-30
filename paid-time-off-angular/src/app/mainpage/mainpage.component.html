@@ -1,5 +1,6 @@
+<br><br>
 <table *ngIf="ls.getid()!=null">
   <tr><th>start date</th><th>end date</th><th>status</th></tr>
-    <tr *ngFor="let request of requests"><td>{{request.d1.toDateString()}}</td><td> {{request.d2.toDateString()}} </td><td> {{getName(request.status)}}</td></tr>
+  <tr *ngFor="let request of requests"><td>{{request.d1.toDateString()}}</td><td> {{request.d2.toDateString()}} </td><td> {{getName(request.status)}}</td></tr>
 
 </table>
