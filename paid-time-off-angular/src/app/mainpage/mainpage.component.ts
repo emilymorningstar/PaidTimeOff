@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Request} from './request.component';
 import {LoginService} from '../login/login.service';
-import {DummyrequestService} from '../dummyrequest.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -18,13 +17,13 @@ export class MainpageComponent implements OnInit {
 
   ];
 
-  constructor(private ls: LoginService, private d: DummyrequestService) {
+  constructor(private ls: LoginService, private r: Request) {
 
   }
 
   ngOnInit() {
-    if (this.d.getRequest() !=  null) {
-      this.requests.push(this.d.getRequest());
+    if (this.r !=  null) {
+      this.requests.push(this.r);
     }
   }
   // retrieveRequests(email: string) {

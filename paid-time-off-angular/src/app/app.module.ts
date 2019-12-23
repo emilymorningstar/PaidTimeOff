@@ -10,9 +10,7 @@ import { NewaccountComponent } from './newaccount/newaccount.component';
 import { CreaterequestComponent } from './createrequest/createrequest.component';
 import {AppRoutingModule} from './app.routing.module';
 import {HolidaysComponent} from './holidays/holidays.component';
-import {DummyrequestService} from './dummyrequest.service';
-
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +25,7 @@ import {DummyrequestService} from './dummyrequest.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule
 
   ],
   providers: [],

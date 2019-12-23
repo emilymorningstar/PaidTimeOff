@@ -8,7 +8,7 @@ import {LoginService} from '../login/login.service';
   styleUrls: ['./adminpage.component.css']
 })
 export class AdminpageComponent implements OnInit {
-  requests: Request[] = [ new Request(0, 0, 'Emily', 'Morningstar', 'emorningstar@riis.com', 3)];
+  requests: Request[] = [];
   constructor(private ls: LoginService) { }
 
   ngOnInit() {

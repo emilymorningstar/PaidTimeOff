@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login/login.service';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-newaccount',
@@ -11,13 +12,13 @@ fname: string;
 lname: string;
 email: string;
 password: string;
-  constructor(private ls: LoginService) { }
+  constructor(private ls: LoginService, private http: HttpClient) { }
 
   ngOnInit() {
   }
 
-  createAccount() {
-// send the new account to the data base
+  createAccount(fname: string, lname: string, email: string, password: string) {
+    return this.http.post('http://localhost:8080/Employees', {'firstname':fname ,'lastname':lname,'email':email,'password':password});
   }
 
   onSubmit($event: any) {
@@ -25,7 +26,7 @@ password: string;
     this.lname = $event.target.lastname.value;
     this.email = $event.target.email.value;
     this.password = $event.target.password.value;
-    this.createAccount();
+    this.createAccount(this.fname,this.lname,this.email,this.password);
 
   }
 }
