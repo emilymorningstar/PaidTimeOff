@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login/login.service';
-import {HttpClient} from "@angular/common/http";
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-newaccount',
   templateUrl: './newaccount.component.html',
@@ -18,7 +17,7 @@ password: string;
   }
 
   createAccount(fname: string, lname: string, email: string, password: string) {
-    return this.http.post('http://localhost:8080/Employees', {'firstname':fname ,'lastname':lname,'email':email,'password':password});
+    return this.http.post('http://localhost:8080/Employees', {'Firstname':fname ,'Lastname':lname,'email':email,'Password':password});
   }
 
   onSubmit($event: any) {
